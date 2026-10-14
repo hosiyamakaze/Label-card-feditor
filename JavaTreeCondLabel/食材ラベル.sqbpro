@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="食材ラベル.db3" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="query browser structure pragmas" current="0"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="649"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><table title="LabelId" custom_title="0" dock_id="1" table="4,7:mainLabelId"/><dock_state state="000000ff00000000fd00000001000000020000042100000361fc0100000001fb000000160064006f0063006b00420072006f00770073006500310100000000000004210000013400ffffff000004210000000000000004000000040000000800000008fc00000000"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="LabelId" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="32"/><column index="2" value="98"/><column index="3" value="195"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="LabelIdx" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="300"/><column index="2" value="62"/><column index="3" value="98"/><column index="4" value="527"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="LabelIdxSTR" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="300"/><column index="2" value="32"/><column index="3" value="98"/><column index="4" value="300"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="Create LabelIdx">DROP TABLE LabelIdx;
+
+CREATE TABLE LabelIdx (
+	Title	TEXT,
+	ID	INTEGER,
+	Label	TEXT,
+	FULL_PATH	TEXT
+);
+
+drop index LabelIdx_idx00;
+
+drop index LabelIdx_idx01;
+
+create unique index LabelIdx_idx00 on LabelIdx (
+	Title,
+	ID
+);
+
+create  index LabelIdx_idx01 on LabelIdx (
+	ID
+);
+
+</sql><sql name="Load LabelIdx*">delete from LabelIdx
+
+INSERT INTO LabelIdx(Title, ID, Label, FULL_PATH )
+SELECT
+    Title, ID, Label, FULL_PATH 
+FROM LabelIdxSTR;
+</sql><sql name="Create LabelId">DROP TABLE LabelId;
+
+CREATE TABLE LabelId (
+	Id	INTEGER,
+	Label	TEXT,
+	Expr	TEXT
+);
+
+
+drop index LabelId_idx00;
+
+drop index LabelId_idx01;
+
+
+
+create unique index LabelId_idx00 on LabelId (
+	Id
+);
+
+create  index LabelId_idx01 on LabelId (
+	Label
+);
+
+
+</sql><sql name="INSERT LabelId">
+delete from LabelId
+;
+
+INSERT INTO LabelId ( Id, Label, Expr ) VALUES ( 1, 'けんますクッキング', 'けんますクッキング');
+INSERT INTO LabelId ( Id, Label, Expr ) VALUES ( 2, 'キャベツ', '春?キャベツ');
+INSERT INTO LabelId ( Id, Label, Expr ) VALUES ( 3, 'きゅうり', '(きゅうり|キュウリ)');
+INSERT INTO LabelId ( Id, Label, Expr ) VALUES ( 4, 'ごま油', '(ごま|胡麻)油');
+INSERT INTO LabelId ( Id, Label, Expr ) VALUES ( 5, 'すりごま', '(すり|スリ|擂り)(ごま|ゴマ|胡麻)');
+INSERT INTO LabelId ( Id, Label, Expr ) VALUES ( 6, 'バター', 'バター');
+INSERT INTO LabelId ( Id, Label, Expr ) VALUES ( 7, 'ブラックペッパー', 'ブラックペッパー');
+INSERT INTO LabelId ( Id, Label, Expr ) VALUES ( 8, '塩', '塩');
+INSERT INTO LabelId ( Id, Label, Expr ) VALUES ( 9, '砂糖', '砂糖');
+INSERT INTO LabelId ( Id, Label, Expr ) VALUES ( 10, '酒', '(日本)?酒');
+INSERT INTO LabelId ( Id, Label, Expr ) VALUES ( 11, '醤油', '醤油');
+INSERT INTO LabelId ( Id, Label, Expr ) VALUES ( 12, '新生姜', '新?生姜');
+INSERT INTO LabelId ( Id, Label, Expr ) VALUES ( 13, '水', '水');
+INSERT INTO LabelId ( Id, Label, Expr ) VALUES ( 14, '創味シャンタン', '創味シャンタン');
+INSERT INTO LabelId ( Id, Label, Expr ) VALUES ( 15, '大根', '(だいん|ダイコン|大根)');
+INSERT INTO LabelId ( Id, Label, Expr ) VALUES ( 16, '唐辛子の輪切り', '唐辛子の?輪切り');
+INSERT INTO LabelId ( Id, Label, Expr ) VALUES ( 17, '豚肩ロース', '豚肩ロース');
+INSERT INTO LabelId ( Id, Label, Expr ) VALUES ( 18, '豚コマ', '豚(コマ|小間切れ)');
+INSERT INTO LabelId ( Id, Label, Expr ) VALUES ( 19, '豚バラ肉', '豚バラ肉?');
+INSERT INTO LabelId ( Id, Label, Expr ) VALUES ( 20, '豚肉', '豚肉');
+INSERT INTO LabelId ( Id, Label, Expr ) VALUES ( 21, '白菜', '白菜');
+INSERT INTO LabelId ( Id, Label, Expr ) VALUES ( 22, '味噌', '味噌');
+INSERT INTO LabelId ( Id, Label, Expr ) VALUES ( 23, '油', '油');
+INSERT INTO LabelId ( Id, Label, Expr ) VALUES ( 24, '油揚げ', '油揚げ?');
+INSERT INTO LabelId ( Id, Label, Expr ) VALUES ( 25, '料理酒', '料理酒');
+</sql><sql name="Work">
+
+select * from LabelIdx
+order by Title,Id
+;
+</sql><current_tab id="4"/></tab_sql></sqlb_project>
