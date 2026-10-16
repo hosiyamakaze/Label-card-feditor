@@ -1,45 +1,45 @@
-#SJIS $Workfile: ƒtƒHƒ‹ƒ_“à‚Ìƒtƒ@ƒCƒ‹‚ğƒ‰ƒxƒ‹‚·‚é.ps1 $$Revision: 2 $$Date: 26/10/16 12:27 $
+#SJIS $Workfile: ãƒ•ã‚©ãƒ«ãƒ€å†…ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ©ãƒ™ãƒ«ã™ã‚‹.ps1 $$Revision: 3 $$Date: 26/10/16 19:48 $
 #$NoKeywords: $
 
 $root = "G:\CMD\LabelforFeditor"
 cd $root
-$importRoot = ".\ƒŒƒVƒs"
+$importRoot = ".\ãƒ¬ã‚·ãƒ”"
 $defs = Import-Csv -Path "LabelId.csv" -Delimiter "`t" -Encoding UTF8
 $index = "labelidx.csv"
 
-#FIP2ƒtƒ@ƒCƒ‹–¼‚ğƒRƒ“ƒ\[ƒ‹‚æ‚è“ü—Í‚·‚é
-Write-Host -ForegroundColor green -NoNewline "FIP2ƒtƒ@ƒCƒ‹–¼?"
+#FIP2ãƒ•ã‚¡ã‚¤ãƒ«åã‚’ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã‚ˆã‚Šå…¥åŠ›ã™ã‚‹
+Write-Host -ForegroundColor green -NoNewline "FIP2ãƒ•ã‚¡ã‚¤ãƒ«å?"
 $tarfl = read-host
-#“ü—Íƒtƒ@ƒCƒ‹‚ª‘¶İ‚·‚é‚±‚Æ‚ğŠm”F‚·‚é
+#å…¥åŠ›ãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã™ã‚‹ã“ã¨ã‚’ç¢ºèªã™ã‚‹
 if(-not (Test-Path -Path $tarfl)){
-    Write-Host -ForegroundColor red -NoNewline "FIP2ƒtƒ@ƒCƒ‹‚ª‘¶İ‚µ‚Ü‚¹‚ñBˆ—‚ğ’†’f‚µ‚Ü‚·B"
+    Write-Host -ForegroundColor red -NoNewline "FIP2ãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã—ã¾ã›ã‚“ã€‚å‡¦ç†ã‚’ä¸­æ–­ã—ã¾ã™ã€‚"
     exit
 }
 
-#o—Í‚Ìfipƒtƒ@ƒCƒ‹–¼‚ğŒˆ’è‚·‚é
+#å‡ºåŠ›ã®fipãƒ•ã‚¡ã‚¤ãƒ«åã‚’æ±ºå®šã™ã‚‹
 $fipfl = (get-item $tarfl).Directory.FullName+"\"+(get-item $tarfl).basename +"_Labeled.fip2"
-Write-Host -ForegroundColor Yellow -NoNewline "Labeled.FIP2ƒtƒ@ƒCƒ‹–¼:"
+Write-Host -ForegroundColor Yellow -NoNewline "Labeled.FIP2ãƒ•ã‚¡ã‚¤ãƒ«å:"
 Write-Host $fipfl
 
-#o—Íƒtƒ@ƒCƒ‹‚ª‘¶İ‚µ‚È‚¢‚±‚Æ‚ğŠm”F‚·‚é
+#å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã—ãªã„ã“ã¨ã‚’ç¢ºèªã™ã‚‹
 if(Test-Path -Path $fipfl){
-    Write-Host -ForegroundColor red -NoNewline "“¯–¼‚ÌFIP2ƒtƒ@ƒCƒ‹‚ª‘¶İ‚µ‚Ü‚·BXV‚µ‚Ü‚·‚©(y/n)?"
+    Write-Host -ForegroundColor red -NoNewline "åŒåã®FIP2ãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã—ã¾ã™ã€‚æ›´æ–°ã—ã¾ã™ã‹(y/n)?"
     $ans = Read-Host 
     if ($ans.ToUpper() -eq "Y"){
         Remove-Item -Path  $fipfl -Force
     }else{
-        Write-Host -ForegroundColor red "ˆ—‚ğ’†’f‚µ‚Ü‚·B"
+        Write-Host -ForegroundColor red "å‡¦ç†ã‚’ä¸­æ–­ã—ã¾ã™ã€‚"
         exit
     }
 }
 
-#ƒ‰ƒxƒ‹ƒ^ƒCƒv‚ğƒRƒ“ƒ\[ƒ‹‚æ‚è“ü—Í‚·‚é
-Write-Host -ForegroundColor green -NoNewline "ƒ‰ƒxƒ‹ƒ^ƒCƒv(1:ƒ‰ƒxƒ‹/2:³‹K•\Œ»/3(else):³‹K•\Œ» as ƒ‰ƒxƒ‹)?"
+#ãƒ©ãƒ™ãƒ«ã‚¿ã‚¤ãƒ—ã‚’ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã‚ˆã‚Šå…¥åŠ›ã™ã‚‹
+Write-Host -ForegroundColor green -NoNewline "ãƒ©ãƒ™ãƒ«ã‚¿ã‚¤ãƒ—(1:ãƒ©ãƒ™ãƒ«/2:æ­£è¦è¡¨ç¾/3(else):æ­£è¦è¡¨ç¾ as ãƒ©ãƒ™ãƒ«)?"
 $LabelType = read-host
 
-#Label‚ğŒŸõ‚·‚é
+#Labelã‚’æ¤œç´¢ã™ã‚‹
 $total = $defs.Count
-Write-Host -ForegroundColor Yellow  "Labelõˆø‚ğŒŸõ’†..."
+Write-Host -ForegroundColor Yellow  "Labelç´¢å¼•ã‚’æ¤œç´¢ä¸­..."
 $Labels = foreach ($d in $defs) {
 Write-Host  -ForegroundColor white  $d.id.Trim() "/" $defs.Count $d.Label.Trim() 
     Get-ChildItem -Path $importRoot -Filter *.txt -Recurse -File |
@@ -55,46 +55,46 @@ Write-Host  -ForegroundColor white  $d.id.Trim() "/" $defs.Count $d.Label.Trim()
             }
         }
 }
-Write-Host -ForegroundColor Yellow "Ï‚İ."
+Write-Host -ForegroundColor Yellow "æ¸ˆã¿."
 
-#Labelõˆøƒtƒ@ƒCƒ‹‚É•Û‘¶‚·‚é
-Write-Host -ForegroundColor Yellow -NoNewline "Labelõˆø‚ğ•Û‘¶’†..."
+#Labelç´¢å¼•ãƒ•ã‚¡ã‚¤ãƒ«ã«ä¿å­˜ã™ã‚‹
+Write-Host -ForegroundColor Yellow -NoNewline "Labelç´¢å¼•ã‚’ä¿å­˜ä¸­..."
 $Labels | Export-Csv -Path $index -NoTypeInformation -Encoding UTF8 -Delimiter "`t"
 
 
-#Title‚ÌLable Id‚ğƒŠƒXƒg‰»‚·‚é
+#Titleã®Lable Idã‚’ãƒªã‚¹ãƒˆåŒ–ã™ã‚‹
 $IdsBbyTitle = @{}
 Import-Csv $index -Delimiter "`t" -Encoding UTF8 |
     Group-Object Title |
     ForEach-Object {
         $IdsBbyTitle[$_.Name] = ($_.Group.id | Sort-Object -Unique) -join ","
     }
-Write-Host -ForegroundColor Yellow "Ï‚İ."
+Write-Host -ForegroundColor Yellow "æ¸ˆã¿."
 
 
-#FIP2ƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚Ş
-Write-Host -ForegroundColor Cyan "Labeled.FIP2ƒtƒ@ƒCƒ‹o—ÍŠJn"
+#FIP2ãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã‚€
+Write-Host -ForegroundColor Cyan "Labeled.FIP2ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›é–‹å§‹"
 $CardDataRAW = Get-Content -Path $tarfl -Encoding UTF8
 
-# ‚Ps‚¸‚Âˆ—‚·‚é
+# ï¼‘è¡Œãšã¤å‡¦ç†ã™ã‚‹
 $rowno = 0
 
-#æ“ª`[[LABELS type=0]]‚Ü‚Å‚Í‚»‚Ì‚Ü‚Üo—Í
+#å…ˆé ­ï½[[LABELS type=0]]ã¾ã§ã¯ãã®ã¾ã¾å‡ºåŠ›
 $literal = [regex]::Escape("[[LABELS type=0]]")
 for(; $rowno -lt $CardDataRAW.length; $rowno++) {
     $CardDataRAW[$rowno] |Out-File -FilePath $fipfl -Append -Encoding utf8
     if($CardDataRAW[$rowno] -match $literal){ break;}
 }
 
-Write-Host -ForegroundColor Yellow -NoNewline "card labelsƒZƒNƒVƒ‡ƒ“‚ğXV’†..."
-#Œ»İ‚Ìƒ‰ƒxƒ‹(card labels)‚ğíœ‚·‚é
+Write-Host -ForegroundColor Yellow -NoNewline "card labelsã‚»ã‚¯ã‚·ãƒ§ãƒ³ã‚’æ›´æ–°ä¸­..."
+#ç¾åœ¨ã®ãƒ©ãƒ™ãƒ«(card labels)ã‚’å‰Šé™¤ã™ã‚‹
 $literal = [regex]::Escape("[[END:LABELS]]")
 for(; $rowno -lt $CardDataRAW.length; $rowno++) {
-    #Šü‚Ä‚é
-    if($CardDataRAW[$rowno] -match "[[END:LABELS]]"){ break;}
+    #æ£„ã¦ã‚‹
+    if($CardDataRAW[$rowno] -match $literal){ break;}
 }
 
-#Label‚ğo—Í‚·‚é
+#Labelã‚’å‡ºåŠ›ã™ã‚‹
 
 ForEach( $label in $defs){
     $labelStr =switch ($LabelType){
@@ -114,16 +114,16 @@ ForEach( $label in $defs){
     "[[END:LABEL]]") -join "`r`n" | Out-File -FilePath $fipfl -Append -Encoding utf8
 }
 $CardDataRAW[$rowno] | Out-File -FilePath $fipfl -Append -Encoding utf8
-Write-Host -ForegroundColor Yellow "Ï‚İ."
+Write-Host -ForegroundColor Yellow "æ¸ˆã¿."
 
-#`[[END:LINKS]]‚Ü‚Å‚Í‚»‚Ì‚Ü‚Üo—Í
+#ï½[[END:LINKS]]ã¾ã§ã¯ãã®ã¾ã¾å‡ºåŠ›
 $literal = [regex]::Escape("[[END:LINKS]]")
 for(; $rowno -lt $CardDataRAW.length; $rowno++) {
     $CardDataRAW[$rowno] |Out-File -FilePath $fipfl -Append -Encoding utf8
-    if($CardDataRAW[$rowno] -match "[[END:LINKS]]"){ break;}
+    if($CardDataRAW[$rowno] -match $literal){ break;}
 }
-#ƒJ[ƒh‚ÌLabelList‚ğXV‚·‚é
-Write-Host -ForegroundColor Yellow "cardƒZƒNƒVƒ‡ƒ“AlabelList‚ğXV’†..."
+#ã‚«ãƒ¼ãƒ‰ã®LabelListã‚’æ›´æ–°ã™ã‚‹
+Write-Host -ForegroundColor Yellow "cardã‚»ã‚¯ã‚·ãƒ§ãƒ³ã€labelListã‚’æ›´æ–°ä¸­..."
 $curTitle = ""
 for(; $rowno -lt $CardDataRAW.length; $rowno++) {
     if($CardDataRAW[$rowno] -match "^title="){ $curTitle = (($CardDataRAW[$rowno] -replace "^Title=", "")-replace "[\r\n]", "")}
@@ -134,6 +134,6 @@ Write-Host -ForegroundColor white  $rowno "/"$CardDataRAW.length  $curTitle
         $CardDataRAW[$rowno] |Out-File -FilePath $fipfl -Append -Encoding utf8
     }
 }
-Write-Host -ForegroundColor Yellow "Ï‚İ."
-Write-Host -ForegroundColor Cyan $fipfl "o—Í‚µ‚Ü‚µ‚½B"
+Write-Host -ForegroundColor Yellow "æ¸ˆã¿."
+Write-Host -ForegroundColor Cyan $fipfl "å‡ºåŠ›ã—ã¾ã—ãŸã€‚"
 
