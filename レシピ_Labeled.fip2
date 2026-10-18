@@ -1,0 +1,620 @@
+FIP2/1
+This is a UTF-8 text file in Frieve Editor's fip2 format.
+
+[Global]
+Version=8
+ReadOnly=0
+DefaultView=-1
+AutoSave=1
+AutoReload=1
+Arrange=0
+ArrangeMode=1
+AutoScroll=0
+AutoZoom=0
+FullScreen=-1
+Exit=-1
+Zoom=-1
+X=0.178299993276596
+Y=0.714900016784668
+TargetCard=-1000
+SizeLimitation=0
+LinkLimitation=0
+DateLimitation=0
+SizeLimitation=100
+LinkLimitation=3
+DateLimitation=0
+LinkDirection=0
+LinkBackward=0
+LinkTarget=7
+DateLimitationDateType=0
+DateLimitationType=0
+
+[[LABELS type=0]]
+[[LABEL]]
+id=1
+name=けんますクッキング
+color=16711681
+enabled=0
+show=1
+hide=0
+fold=0
+size=100
+[[END:LABEL]]
+[[LABEL]]
+id=2
+name=キャベツ
+color=16711682
+enabled=1
+show=1
+hide=0
+fold=0
+size=100
+[[END:LABEL]]
+[[LABEL]]
+id=3
+name=きゅうり
+color=16711683
+enabled=1
+show=1
+hide=0
+fold=0
+size=100
+[[END:LABEL]]
+[[LABEL]]
+id=4
+name=ごま油
+color=16711684
+enabled=0
+show=1
+hide=0
+fold=0
+size=100
+[[END:LABEL]]
+[[LABEL]]
+id=5
+name=すりごま
+color=16711685
+enabled=0
+show=1
+hide=0
+fold=0
+size=100
+[[END:LABEL]]
+[[LABEL]]
+id=6
+name=バター
+color=16711686
+enabled=0
+show=1
+hide=0
+fold=0
+size=100
+[[END:LABEL]]
+[[LABEL]]
+id=7
+name=ブラックペッパー
+color=16711687
+enabled=0
+show=1
+hide=0
+fold=0
+size=100
+[[END:LABEL]]
+[[LABEL]]
+id=8
+name=塩
+color=16711688
+enabled=0
+show=1
+hide=0
+fold=0
+size=100
+[[END:LABEL]]
+[[LABEL]]
+id=9
+name=砂糖
+color=16711689
+enabled=0
+show=1
+hide=0
+fold=0
+size=100
+[[END:LABEL]]
+[[LABEL]]
+id=10
+name=酒
+color=16711690
+enabled=0
+show=1
+hide=0
+fold=0
+size=100
+[[END:LABEL]]
+[[LABEL]]
+id=11
+name=醤油
+color=16711691
+enabled=0
+show=1
+hide=0
+fold=0
+size=100
+[[END:LABEL]]
+[[LABEL]]
+id=12
+name=新生姜
+color=16711692
+enabled=1
+show=1
+hide=0
+fold=0
+size=100
+[[END:LABEL]]
+[[LABEL]]
+id=13
+name=水
+color=16711693
+enabled=0
+show=1
+hide=0
+fold=0
+size=100
+[[END:LABEL]]
+[[LABEL]]
+id=14
+name=創味シャンタン
+color=16711694
+enabled=0
+show=1
+hide=0
+fold=0
+size=100
+[[END:LABEL]]
+[[LABEL]]
+id=15
+name=大根
+color=16711695
+enabled=1
+show=1
+hide=0
+fold=0
+size=100
+[[END:LABEL]]
+[[LABEL]]
+id=16
+name=唐辛子の輪切り
+color=16711696
+enabled=0
+show=1
+hide=0
+fold=0
+size=100
+[[END:LABEL]]
+[[LABEL]]
+id=17
+name=豚肩ロース
+color=16711697
+enabled=1
+show=1
+hide=0
+fold=0
+size=100
+[[END:LABEL]]
+[[LABEL]]
+id=18
+name=豚コマ
+color=16711698
+enabled=1
+show=1
+hide=0
+fold=0
+size=100
+[[END:LABEL]]
+[[LABEL]]
+id=19
+name=豚バラ肉
+color=16711699
+enabled=1
+show=1
+hide=0
+fold=0
+size=100
+[[END:LABEL]]
+[[LABEL]]
+id=20
+name=豚肉
+color=16711700
+enabled=1
+show=1
+hide=0
+fold=0
+size=100
+[[END:LABEL]]
+[[LABEL]]
+id=21
+name=白菜
+color=16711701
+enabled=1
+show=1
+hide=0
+fold=0
+size=100
+[[END:LABEL]]
+[[LABEL]]
+id=22
+name=味噌
+color=16711702
+enabled=1
+show=1
+hide=0
+fold=0
+size=100
+[[END:LABEL]]
+[[LABEL]]
+id=23
+name=油
+color=16711703
+enabled=0
+show=1
+hide=0
+fold=0
+size=100
+[[END:LABEL]]
+[[LABEL]]
+id=24
+name=油揚げ
+color=16711704
+enabled=0
+show=1
+hide=0
+fold=0
+size=100
+[[END:LABEL]]
+[[LABEL]]
+id=25
+name=料理酒
+color=16711705
+enabled=0
+show=1
+hide=0
+fold=0
+size=100
+[[END:LABEL]]
+[[END:LABELS]]
+
+[[LABELS type=1]]
+[[LABEL]]
+id=1
+name=レシピ
+color=16776960
+enabled=1
+show=1
+hide=0
+fold=0
+size=100
+[[END:LABEL]]
+[[LABEL]]
+id=2
+name=味噌味
+color=16776961
+enabled=1
+show=1
+hide=0
+fold=0
+size=100
+[[END:LABEL]]
+[[LABEL]]
+id=3
+name=生姜味
+color=16776963
+enabled=1
+show=1
+hide=0
+fold=0
+size=100
+[[END:LABEL]]
+[[LABEL]]
+id=4
+name=醤油味
+color=16776965
+enabled=1
+show=1
+hide=0
+fold=0
+size=100
+[[END:LABEL]]
+[[END:LABELS]]
+
+[[LINKS]]
+[[LINK]]
+from=0
+to=1
+directionVisible=1
+shape=0
+labels=1
+name=
+[[END:LINK]]
+[[LINK]]
+from=1
+to=2
+directionVisible=1
+shape=0
+labels=2
+name=
+[[END:LINK]]
+[[LINK]]
+from=0
+to=3
+directionVisible=1
+shape=0
+labels=1
+name=
+[[END:LINK]]
+[[LINK]]
+from=3
+to=4
+directionVisible=1
+shape=0
+labels=3
+name=
+[[END:LINK]]
+[[LINK]]
+from=0
+to=5
+directionVisible=1
+shape=0
+labels=1
+name=
+[[END:LINK]]
+[[LINK]]
+from=5
+to=6
+directionVisible=1
+shape=0
+labels=4
+name=
+[[END:LINK]]
+[[LINK]]
+from=5
+to=7
+directionVisible=1
+shape=0
+labels=4
+name=
+[[END:LINK]]
+[[END:LINKS]]
+
+[[CARDS focus=6]]
+[[CARD id=0]]
+title=レシピ
+visible=1
+shape=2
+size=100
+top=1
+fixed=0
+fold=0
+x=0.612767696380615
+y=0
+created=2026/10/18 14:27:32
+updated=2026/10/18 14:27:32
+viewed=2026/10/18 14:27:32
+labelList=
+drawing=00000000
+<!--BODY token=549F1457175C0887-->
+
+∞<import:
+G:\CMD\LabelforFeditor\レシピ
+<!--END_BODY token=549F1457175C0887-->
+[[END:CARD]]
+[[CARD id=1]]
+title=味噌味
+visible=1
+shape=2
+size=100
+top=0
+fixed=0
+fold=0
+x=1
+y=0.603284180164337
+created=2026/10/18 14:27:32
+updated=2026/10/18 14:27:32
+viewed=2026/10/18 14:27:32
+labelList=
+drawing=00000000
+<!--BODY token=71CD58A3508214BC-->
+
+∞<import:
+G:\CMD\LabelforFeditor\レシピ\味噌味
+<!--END_BODY token=71CD58A3508214BC-->
+[[END:CARD]]
+[[CARD id=2]]
+title=011_【春キャベツ】を使った香り高い胡麻味噌バター炒めの作り方_食べれば食べるほど食欲が出る！
+visible=1
+shape=2
+size=100
+top=0
+fixed=0
+fold=0
+x=0.221210241317749
+y=1.14552390575409
+created=2026/10/18 14:27:32
+updated=2026/10/18 14:27:32
+viewed=2026/10/18 15:39:48
+labelList=1,2,5,6,9,10,16,17,22,25
+drawing=00000000
+<!--BODY token=B49DF3710DFF8B82-->
+【春キャベツ】を使った香り高い胡麻味噌バター炒めの作り方 食べれば食べるほど食欲が出る！
+https://youtu.be/o2A-I0oDfW4
+けんますクッキング
+【材料一覧】
+春キャベツ　　　　　　　　　　1/4個
+豚肩ロース　　　　　　　　　　100g
+【調味料一覧】
+ー合わせ調味料ー
+すりごま　　　　　　　　　　　大さじ2杯
+味噌　　　　　　　　　　　　　大さじ2杯
+料理酒　　　　　　　　　　　　大さじ2杯
+砂糖　　　　　　　　　　　　　小さじ2杯
+唐辛子の輪切り　　　　　　　　1つまみ
+ーその他ー
+バター　　　　　　　　　　　　20g
+
+∞<import:
+G:\CMD\LabelforFeditor\レシピ\味噌味\011_【春キャベツ】を使った香り高い胡麻味噌バター炒めの作り方_食べれば食べるほど食欲が出る！.txt
+<!--END_BODY token=B49DF3710DFF8B82-->
+[[END:CARD]]
+[[CARD id=3]]
+title=生姜味
+visible=1
+shape=2
+size=100
+top=0
+fixed=0
+fold=0
+x=0.26460599899292
+y=0.999194502830505
+created=2026/10/18 14:27:32
+updated=2026/10/18 14:27:32
+viewed=2026/10/18 15:38:18
+labelList=
+drawing=00000000
+<!--BODY token=9E3306E3F358B112-->
+
+∞<import:
+G:\CMD\LabelforFeditor\レシピ\生姜味
+<!--END_BODY token=9E3306E3F358B112-->
+[[END:CARD]]
+[[CARD id=4]]
+title=031_きゅうりと豚肉のサッパリ生姜炒めの作り方！
+visible=1
+shape=2
+size=100
+top=0
+fixed=0
+fold=0
+x=0.673854947090149
+y=0.889280319213867
+created=2026/10/18 14:27:32
+updated=2026/10/18 14:27:32
+viewed=2026/10/18 15:37:21
+labelList=1,3,4,7,8,10,11,12,14,18,20,23
+drawing=00000000
+<!--BODY token=ABCADE4DFF3E68CA-->
+きゅうりと豚肉のサッパリ生姜炒めの作り方！
+https://youtu.be/2SGtX9g1oqs
+けんますクッキング
+材料一覧！
+
+きゅうり　　　　　　　2本
+豚コマ　　　　　　　１５０グラム
+新生姜　　　　　　　７０グラム
+
+調味料一覧！
+
+塩　　　　　　　　　適量
+油　　　　　　　　　大さじ1杯
+酒　　　　　　　　　大さじ1杯
+創味シャンタン　　　小さじ8分目
+醤油　　　　　　　　小さじ1杯
+ブラックペッパー　　適量
+ごま油　　　　　　　小さじ1杯
+
+∞<import:
+G:\CMD\LabelforFeditor\レシピ\生姜味\031_きゅうりと豚肉のサッパリ生姜炒めの作り方！.txt
+<!--END_BODY token=ABCADE4DFF3E68CA-->
+[[END:CARD]]
+[[CARD id=5]]
+title=醤油味
+visible=1
+shape=2
+size=100
+top=0
+fixed=0
+fold=0
+x=0.0440487749874592
+y=0.761928081512451
+created=2026/10/18 14:27:32
+updated=2026/10/18 14:27:32
+viewed=2026/10/18 14:27:32
+labelList=
+drawing=00000000
+<!--BODY token=13F51AD5F11BF250-->
+
+∞<import:
+G:\CMD\LabelforFeditor\レシピ\醤油味
+<!--END_BODY token=13F51AD5F11BF250-->
+[[END:CARD]]
+[[CARD id=6]]
+title=049_豚バラ大根の作り方！
+visible=1
+shape=2
+size=100
+top=0
+fixed=0
+fold=0
+x=0.445639371871948
+y=0.335440337657928
+created=2026/10/18 14:27:32
+updated=2026/10/18 14:27:32
+viewed=2026/10/18 15:40:05
+labelList=1,4,9,10,11,13,14,15,19,23
+drawing=00000000
+<!--BODY token=4EB87682864230BD-->
+豚バラ大根の作り方！
+https://youtu.be/HuVodcEKRlQ?t=323
+けんますクッキング
+材料一覧！
+大根　　　　　　　　半分
+豚バラ肉　　　　　　２００グラム
+調味料一覧！
+水　　　　　　　　　１５０CC
+創味シャンタン　　　小さじ１杯
+酒　　　　　　　　　大さじ2杯
+醤油　　　　　　　　大さじ2杯
+砂糖　　　　　　　　小さじ１杯
+油　　　　　　　　　大さじ１杯
+ごま油　　　　　　　小さじ１杯
+
+∞<import:
+G:\CMD\LabelforFeditor\レシピ\醤油味\049_豚バラ大根の作り方！.txt
+<!--END_BODY token=4EB87682864230BD-->
+[[END:CARD]]
+[[CARD id=7]]
+title=050_豚バラ白菜の作り方！
+visible=1
+shape=2
+size=100
+top=0
+fixed=0
+fold=0
+x=0.445632874965668
+y=0.335441410541534
+created=2026/10/18 14:27:32
+updated=2026/10/18 14:27:32
+viewed=2026/10/18 15:36:21
+labelList=1,4,9,10,11,13,14,19,21,23,24
+drawing=00000000
+<!--BODY token=CA83CD8995E037D3-->
+豚バラ白菜の作り方！
+https://youtu.be/n4_22t3D0ts?t=316
+けんますクッキング
+材料一覧！
+白菜　　　　　　　　8分の１　４００グラム
+豚バラ肉　　　　　　２００グラム
+油揚げ　　　　　　　2枚
+調味料一覧！
+水　　　　　　　　　　１５０CC
+創味シャンタン　　　　小さじ１杯
+酒　　　　　　　　　　大さじ2杯
+醤油　　　　　　　　　大さじ2杯
+砂糖　　　　　　　　　小さじ1杯　　
+油　　　　　　　　　　大さじ1杯
+ごま油　　　　　　　　小さじ１杯
+調理方法！	肉→白菜･油揚げを炒めて、タレで味付けして、汁がなくなるまで炒める
+
+∞<import:
+G:\CMD\LabelforFeditor\レシピ\醤油味\050_豚バラ白菜の作り方！.txt
+<!--END_BODY token=CA83CD8995E037D3-->
+[[END:CARD]]
+[[END:CARDS]]
+
