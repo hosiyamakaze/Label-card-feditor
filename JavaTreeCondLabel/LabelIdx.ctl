@@ -1,5 +1,5 @@
 >cd G:\CMD\LabelforFeditor
->sqlite3 HŞƒ‰ƒxƒ‹.db3
+>sqlite3 é£Ÿæãƒ©ãƒ™ãƒ«.db3
 drop table LabelIdxSTR;
 .mode csv
 .separator "\t"
