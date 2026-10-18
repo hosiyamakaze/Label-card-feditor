@@ -1,4 +1,4 @@
-#SJIS $Workfile: フォルダ内のファイルをラベルする.ps1 $$Revision: 3 $$Date: 26/10/16 19:48 $
+#SJIS $Workfile: フォルダ内のファイルをラベルする.ps1 $$Revision: 5 $$Date: 26/10/18 15:48 $
 #$NoKeywords: $
 
 $root = "G:\CMD\LabelforFeditor"
@@ -63,11 +63,11 @@ $Labels | Export-Csv -Path $index -NoTypeInformation -Encoding UTF8 -Delimiter "
 
 
 #TitleのLable Idをリスト化する
-$IdsBbyTitle = @{}
+$IdsByTitle = @{}
 Import-Csv $index -Delimiter "`t" -Encoding UTF8 |
     Group-Object Title |
     ForEach-Object {
-        $IdsBbyTitle[$_.Name] = ($_.Group.id | Sort-Object -Unique) -join ","
+        $IdsByTitle[$_.Name] = ($_.Group.id) -join ","
     }
 Write-Host -ForegroundColor Yellow "済み."
 
@@ -94,8 +94,7 @@ for(; $rowno -lt $CardDataRAW.length; $rowno++) {
     if($CardDataRAW[$rowno] -match $literal){ break;}
 }
 
-#Labelを出力する
-
+#Card Labelを出力する
 ForEach( $label in $defs){
     $labelStr =switch ($LabelType){
         "1" { $label.Label.Trim(); break; }
@@ -105,7 +104,7 @@ ForEach( $label in $defs){
     ("[[LABEL]]",`
     (("id=" + $label.id.Trim()) -replace "[\r\n]", ""),`
     (("name=" + $labelStr) -replace "[\r\n]", ""),`
-    (("color=" + (0x00FF00 + $label.id.Trim() % 0x100).ToString()) -replace "[\r\n]", ""),`
+    (("color=" + (0xFF0000 + $label.id.Trim() % 0x10000).ToString()) -replace "[\r\n]", ""),`
     "enabled=1",`
     "show=1",`
     "hide=0",`
@@ -116,19 +115,87 @@ ForEach( $label in $defs){
 $CardDataRAW[$rowno] | Out-File -FilePath $fipfl -Append -Encoding utf8
 Write-Host -ForegroundColor Yellow "済み."
 
-#～[[END:LINKS]]まではそのまま出力
-$literal = [regex]::Escape("[[END:LINKS]]")
-for(; $rowno -lt $CardDataRAW.length; $rowno++) {
-    $CardDataRAW[$rowno] |Out-File -FilePath $fipfl -Append -Encoding utf8
+#[[LABELS type=1]]～[[END:LABELS]]までを削除する
+$literal = [regex]::Escape("[[END:LABELS]]")
+for($rowno ++; $rowno -lt $CardDataRAW.length; $rowno++) {
+    #棄てる
     if($CardDataRAW[$rowno] -match $literal){ break;}
 }
+
+#-----Links ([[LINKS]])セクションを走査しfromのカードidを収集する
+Write-Host -ForegroundColor Yellow -NoNewline "linksセクションを走査中..."
+$fromCardIds = @{}
+$llId = 1
+$literal = [regex]::Escape("[[END:LINKS]]")
+for( $serchrow = $rowno;$serchrow -lt $CardDataRAW.length; $serchrow++) {
+    if($CardDataRAW[$serchrow].StartsWith("from=")){
+        $curCard = (($CardDataRAW[$serchrow] -replace "^from=", "")-replace "[\r\n]", "")
+        if(!$fromCardIds.ContainsKey($curCard)){
+            $fromCardIds[$curCard] = $llId ++;
+        }
+     }
+    if($CardDataRAW[$serchrow] -match $literal){ break;}
+}
+$nofLinkLabels = $llId - 1;
+Write-Host -ForegroundColor Yellow "済み."
+
+#-----[[CARD id=<card id>]]セクションを走査しカードのタイトル(link label name)を収集する
+Write-Host -ForegroundColor Yellow -NoNewline "cardsセクションを走査中..."
+$fromCardTitles = @{}
+for(;$serchrow -lt $CardDataRAW.length; $serchrow++) {
+    if($CardDataRAW[$serchrow] -match "^[[][[]Card id=[0-9]+[]][]]$"){ $curCard = (($CardDataRAW[$serchrow] -replace "[^0-9]", "")-replace "[\r\n]", "")}
+    if($fromCardIds.Contains($curCard)){
+        if($CardDataRAW[$serchrow].StartsWith("title=")){
+             $fromCardTitles[$curCard]=(($CardDataRAW[$serchrow] -replace "^title=", "")-replace "[\r\n]", "")
+        }
+    }
+}
+Write-Host -ForegroundColor Yellow "済み."
+
+#link labelsを出力する
+Write-Host -ForegroundColor Yellow -NoNewline "link labelsセクションを更新中..."
+"[[LABELS type=1]]" | Out-File -FilePath $fipfl -Append -Encoding utf8
+foreach( $card in ($fromCardIds.Keys |Sort-Object) ){
+    ("[[LABEL]]",`
+    ("id=" + $fromCardIds[$card] -replace "[\r\n]", ""),`
+    (("name=" + $fromCardTitles[$card] ) -replace "[\r\n]", ""),`
+    (("color=" + (0xFFFF00 + $card % 0x100).ToString()) -replace "[\r\n]", ""),`
+    "enabled=1",`
+    "show=1",`
+    "hide=0",`
+    "fold=0",`
+    "size=100",`
+    "[[END:LABEL]]") -join "`r`n" | Out-File -FilePath $fipfl -Append -Encoding utf8
+}
+$CardDataRAW[$rowno] | Out-File -FilePath $fipfl -Append -Encoding utf8
+Write-Host -ForegroundColor Yellow "済み."
+
+#～[[END:LINKS]]まではリンクのlabelsを更新する
+Write-Host -ForegroundColor Yellow "linksセクションを更新中..."
+$literal = [regex]::Escape("[[END:LINKS]]")
+$curCard = "-1"; $oldCurCard = $curCard;
+for($rowno ++; $rowno -lt $CardDataRAW.length; $rowno++) {
+    if($CardDataRAW[$rowno].StartsWith("from=")){ $curCard = (($CardDataRAW[$rowno] -replace "^from=", "")-replace "[\r\n]", "")}
+    if($CardDataRAW[$rowno].StartsWith("labels=")){
+        "labels=" + $fromCardIds[$curCard] |Out-File -FilePath $fipfl -Append -Encoding utf8
+        if( [int]$curCard -gt [int]$oldCurCard ){
+            $oldCurCard = $curCard;
+Write-Host -ForegroundColor white  $fromCardIds[$oldCurCard]  "/" $nofLinkLabels $fromCardTitles[$oldCurCard]
+        }
+     }else{
+        $CardDataRAW[$rowno] |Out-File -FilePath $fipfl -Append -Encoding utf8
+    }
+    if($CardDataRAW[$rowno] -match $literal){ break;}
+}
+Write-Host -ForegroundColor Yellow "済み."
+
 #カードのLabelListを更新する
 Write-Host -ForegroundColor Yellow "cardセクション、labelListを更新中..."
 $curTitle = ""
-for(; $rowno -lt $CardDataRAW.length; $rowno++) {
-    if($CardDataRAW[$rowno] -match "^title="){ $curTitle = (($CardDataRAW[$rowno] -replace "^Title=", "")-replace "[\r\n]", "")}
-    if($CardDataRAW[$rowno] -match "^labelList="){
-        "labelList=" + $IdsBbyTitle[$curTitle]|Out-File -FilePath $fipfl -Append -Encoding utf8
+for($rowno ++; $rowno -lt $CardDataRAW.length; $rowno++) {
+    if($CardDataRAW[$rowno].StartsWith("title=")){ $curTitle = (($CardDataRAW[$rowno] -replace "^Title=", "")-replace "[\r\n]", "")}
+    if($CardDataRAW[$rowno].StartsWith("labelList=")){
+        "labelList=" + $IdsByTitle[$curTitle]|Out-File -FilePath $fipfl -Append -Encoding utf8
 Write-Host -ForegroundColor white  $rowno "/"$CardDataRAW.length  $curTitle
      }else{
         $CardDataRAW[$rowno] |Out-File -FilePath $fipfl -Append -Encoding utf8
