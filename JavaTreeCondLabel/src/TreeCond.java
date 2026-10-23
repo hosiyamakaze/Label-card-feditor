@@ -669,7 +669,7 @@ public class TreeCond extends JApplet {
 			}
 		}	
 
-		if(condFolder != null){
+		if(condFolder != null && condFolder.length()>0){
 			SQLString = new String((SQLString!=null?SQLString+folder.toSQLString():"") + condFolder);
 		}
 
